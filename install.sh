@@ -58,6 +58,7 @@ check_and_install "nvm"        "[ -d \"\$HOME/.nvm\" ]" "brew install nvm && mkd
 check_and_install "nodejs"     "command -v node"       "export NVM_DIR=\"\$HOME/.nvm\" && [ -s \"/opt/homebrew/opt/nvm/nvm.sh\" ] && . \"/opt/homebrew/opt/nvm/nvm.sh\" && nvm install --lts"
 check_and_install "typescript" "command -v tsc"        "npm install -g typescript"
 check_and_install "tmux"       "command -v tmux"       "brew install tmux"
+check_and_install "lazygit"    "command -v lazygit"    "brew install lazygit"
 check_and_install "wezterm"    "command -v wezterm || [ -d /Applications/WezTerm.app ]" "brew install --cask wezterm"
 check_and_install "gh"         "command -v gh"         "brew install gh"
 check_and_install "claude"     "command -v claude"     "brew install claude"
