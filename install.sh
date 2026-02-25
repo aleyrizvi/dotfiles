@@ -59,6 +59,10 @@ check_and_install "nodejs"     "command -v node"       "export NVM_DIR=\"\$HOME/
 check_and_install "typescript" "command -v tsc"        "npm install -g typescript"
 check_and_install "tmux"       "command -v tmux"       "brew install tmux"
 check_and_install "wezterm"    "command -v wezterm || [ -d /Applications/WezTerm.app ]" "brew install --cask wezterm"
+check_and_install "gh"         "command -v gh"         "brew install gh"
+check_and_install "claude"     "command -v claude"     "brew install claude"
+check_and_install "windsurf"   "command -v windsurf || [ -d /Applications/Windsurf.app ]" "brew install --cask windsurf"
+check_and_install "copilot-cli" "gh extension list | grep -q copilot" "gh extension install github/gh-copilot"
 
 echo ""
 echo "All dependencies satisfied."

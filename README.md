@@ -34,7 +34,7 @@ chmod +x install.sh
 
 The install script will:
 
-1. Verify macOS and install dependencies (Homebrew, Docker, Go, Rust, Node.js, Tmux, WezTerm)
+1. Verify macOS and install dependencies (Homebrew, Docker, Go, Rust, Node.js, Tmux, WezTerm, Claude Code, Windsurf, GitHub Copilot CLI)
 2. Back up existing configs to `~/.config-backup/<timestamp>/`
 3. Symlink/copy all configs to their expected locations
 4. Install tmux plugin manager (tpm) if missing
@@ -113,6 +113,14 @@ Built on **Neovim 0.10+** with [lazy.nvim](https://github.com/folke/lazy.nvim) f
 - Plugins: git, zsh-autosuggestions
 - Alias: `vim` → `nvim`
 - Configured paths: Go, Rust (Cargo), Android SDK, Python 3.12, JetBrains Toolbox
+
+## AI & CLI Tools
+
+Installed automatically by the setup script:
+
+- **[Claude Code](https://claude.com/claude-code)** - Anthropic's CLI for Claude
+- **[Windsurf](https://windsurf.com)** - AI-powered IDE
+- **[GitHub Copilot CLI](https://docs.github.com/en/copilot/github-copilot-in-the-cli)** - AI assistance in the terminal (`gh copilot`)
 
 ## Requirements
 
