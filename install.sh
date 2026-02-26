@@ -63,7 +63,25 @@ check_and_install "wezterm"    "command -v wezterm || [ -d /Applications/WezTerm
 check_and_install "gh"         "command -v gh"         "brew install gh"
 check_and_install "claude"     "command -v claude"     "brew install claude"
 check_and_install "windsurf"   "command -v windsurf || [ -d /Applications/Windsurf.app ]" "brew install --cask windsurf"
-check_and_install "copilot-cli" "gh extension list | grep -q copilot" "gh extension install github/gh-copilot"
+check_and_install "jetbrains-mono-nerd-font" "brew list --cask font-jetbrains-mono-nerd-font" "brew install --cask font-jetbrains-mono-nerd-font"
+check_and_install "pure-prompt" "brew list pure" "brew install pure"
+
+# gh copilot is now built-in but requires auth
+if gh copilot --version &>/dev/null; then
+  echo "  [✓] copilot-cli (built-in)"
+else
+  if ! gh auth status &>/dev/null; then
+    echo ""
+    echo "  GitHub CLI not authenticated (required for Copilot CLI)."
+    echo "  Opening browser for login..."
+    gh auth login --web -p https
+  fi
+  if gh copilot --version &>/dev/null; then
+    echo "  [✓] copilot-cli (built-in)"
+  else
+    echo "  [✗] copilot-cli — skipped (requires gh auth)"
+  fi
+fi
 
 echo ""
 echo "All dependencies satisfied."
@@ -116,6 +134,17 @@ if [[ -d "$SCRIPT_DIR/tmux/plugins" ]]; then
   cp -r "$SCRIPT_DIR/tmux/plugins" "$HOME/.config/tmux/plugins"
 fi
 echo "  [✓] tmux"
+
+# Install zsh-autosuggestions plugin for oh-my-zsh if missing
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+if [[ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]]; then
+  echo ""
+  echo "Installing zsh-autosuggestions..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+  echo "  [✓] zsh-autosuggestions installed"
+else
+  echo "  [✓] zsh-autosuggestions"
+fi
 
 # Install tmux plugin manager if missing
 if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then

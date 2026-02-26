@@ -34,7 +34,7 @@ chmod +x install.sh
 
 The install script will:
 
-1. Verify macOS and install dependencies (Homebrew, Docker, Go, Rust, Node.js, Tmux, WezTerm, Claude Code, Windsurf, GitHub Copilot CLI)
+1. Verify macOS and install dependencies (Homebrew, Docker, Go, Rust, Node.js, Tmux, WezTerm, Claude Code, Windsurf, GitHub Copilot CLI, JetBrainsMono Nerd Font)
 2. Back up existing configs to `~/.config-backup/<timestamp>/`
 3. Symlink/copy all configs to their expected locations
 4. Install tmux plugin manager (tpm) if missing
@@ -126,4 +126,4 @@ Installed automatically by the setup script:
 
 - macOS
 - [Homebrew](https://brew.sh) (installed automatically)
-- [Nerd Font](https://www.nerdfonts.com/) (JetBrainsMono recommended)
+- [JetBrainsMono Nerd Font](https://www.nerdfonts.com/) (installed automatically by `install.sh`)
